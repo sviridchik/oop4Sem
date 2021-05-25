@@ -1,0 +1,104 @@
+{% load price_with_promo %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Country info page</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/pricing/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="pricing.css" rel="stylesheet">
+</head>
+<style>
+
+    body {
+        background-image: url('media/back_for_country.jpeg');
+
+        background-size: 100%;
+    }
+
+    .lead {
+        font-style: italic;
+        color: white;
+    }
+
+
+    .display-4 {
+        color: white;
+    }
+</style>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Авива</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/home">Home</a>
+        <a class="p-2 text-dark" href="/contact">Contacts</a>
+        <a class="p-2 text-dark">{{ request.user }}</a>
+    </nav>
+</div>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Картинка</th>
+        <th scope="col">Название</th>
+        <th scope="col">Страна</th>
+        <th scope="col">Продолжительность в днях</th>
+        <th scope="col">Цена за сутки</th>
+        <th scope="col">Количество</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for packet in packets %}
+        <tr>
+
+            <th scope="row"><img class="rounded-circle" src="{{ packet.photo.url }}" alt="Generic placeholder image"
+                                 width="140" height="140">
+            </th>
+            <td>{{ packet.title }}</td>
+            <td>{{ packet.country }}</td>
+            <td>{{ packet.duration }}</td>
+            {% if packet.price == packet.price|price_with_promo:request.user %}
+                <td>{{ packet.price }}</td>
+            {% else %}
+                <td>{{ packet.price|price_with_promo:request.user }} <s>{{ packet.price }}</s></td>
+            {% endif %}
+            <td>{{ packet.amount }}</td>
+            <td>
+                <form action="/country_info/packet/{{ packet.idPacket }}" method="get">
+                    <button type="submit" class="btn btn-primary btn-block">Choose</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<script src="../../assets/js/vendor/holder.min.js"></script>
+<script>
+    Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+    });
+</script>
+<!--Библиотека jQuery-->
+</body>
+</html>

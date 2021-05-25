@@ -1,0 +1,16 @@
+{% extends 'signup.html' %}
+ 
+<!--{% block title %}Регистрация{% endblock %}-->
+
+
+{% block content %}
+
+    <h2>Регистрация детальная</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+<!--           <a class="nav-link" style="font:italic 50px bold"  href="/signup">sign up</a>-->
+
+{% endblock %}

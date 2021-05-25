@@ -1,0 +1,16 @@
+{% extends 'signin.html' %}
+ 
+<!--{% block title %}Авторизация{% endblock %}-->
+
+
+{% block content %}
+
+    <h2>Авторизцая</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+           <a class="nav-link" style="font:italic 50px bold"  href="/signup">sign up</a>
+
+{% endblock %}

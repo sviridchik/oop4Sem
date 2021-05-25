@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+
+    <main>
+         {%if messages%}
+        <p>qwerty</p>
+{% for mes in messages%}
+{%if mes.tags == 'error'%}
+<!--         <p>qwertyerror</p>-->
+<div class="alert alert-danger" role="alert">
+{{mes}}
+</div>
+{%else%}
+<!--           <p>qwertyok</p>-->
+<div class="alert alert-success" role="alert">
+            {{mes}}
+</div>
+
+{%endif%}
+{%endfor%}
+{%endif%}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

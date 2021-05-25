@@ -1,0 +1,103 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+body {
+  background-image: url('media/5.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+}
+</style>
+{% if messages %}
+    <!--        <p>qwerty</p>-->
+    {% for mes in messages %}
+        {% if mes.tags == 'error' %}
+            <!--         <p>qwertyerror</p>-->
+            <div class="alert alert-danger text-center" role="alert">
+                {{ mes }}
+            </div>
+        {% else %}
+            <!--           <p>qwertyok</p>-->
+            <div class="alert alert-success text-center" role="alert">
+                {{ mes }}
+            </div>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+  <!-- Contact Us Section -->
+    <section class="Material-contact-section section-padding section-dark">
+      <div class="container">
+          <div class="row">
+              <!-- Section Titile -->
+              <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
+                  <h1 class="section-title">Страничка с контактами</h1>
+              </div>
+          </div>
+          <div class="row">
+              <!-- Section Titile -->
+              <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
+                <p>Хотите с нами пообщаться? Ну что ж , давайте.</p>
+
+                <div class="find-widget">
+                 Company:  <a href="https://hostriver.ro">Турагенство "Авива"</a>
+                </div>
+                <div class="find-widget">
+                 Address: <a href="#">Наш адрес</a>
+                </div>
+                <div class="find-widget">
+                  Phone:  <a href="#">+ 375441232344</a>
+                </div>
+
+                <div class="find-widget">
+                  Website:  <a href="/about">/about</a>
+                </div>
+                <div class="find-widget">
+                   Program: <a href="#">Время работы : пн-сб 10-18</a>
+                </div>
+              </div>
+              <!-- contact form -->
+              <div class="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
+                  <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
+                      {% csrf_token %}
+                      <!-- Name -->
+                      <div class="form-group label-floating">
+                        <label class="control-label" for="name">Имя</label>
+                        <input class="form-control" id="name" type="text" name="name" required data-error="Please enter your name">
+                        <div class="help-block with-errors"></div>
+                      </div>
+                      <!-- email -->
+                      <div class="form-group label-floating">
+                        <label class="control-label" for="email">Email</label>
+                        <input class="form-control" id="email" type="email" name="email" required data-error="Please enter your Email">
+                        <div class="help-block with-errors"></div>
+                      </div>
+
+                      <!-- Message -->
+                      <div class="form-group label-floating">
+                          <label for="message" class="control-label">Опишите вашу проблему</label>
+                          <textarea class="form-control" rows="3" id="message" name="message" required data-error="Write your message"></textarea>
+                          <div class="help-block with-errors"></div>
+                      </div>
+                      <!-- Form Submit -->
+                      <div class="form-submit mt-5">
+                          <button class="btn btn-common" type="submit" id="form-submit"><i class="material-icons mdi mdi-message-outline"></i> Отправить</button>
+                          <div id="msgSubmit" class="h3 text-center hidden"></div>
+                          <div class="clearfix"></div>
+                      </div>
+                  </form>
+
+                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+                 <form action="/country_info">
+    <button type="submit">Назад</button>
+</form>
+              </div>
+          </div>
+      </div>
+    </section>

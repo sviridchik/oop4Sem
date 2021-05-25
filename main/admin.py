@@ -1,0 +1,22 @@
+from django.contrib import admin
+from .models import *
+# Register your models here.
+admin.site.register(Person)
+admin.site.register(Order)
+admin.site.register(Country)
+admin.site.register(Religion)
+admin.site.register(Restriction)
+admin.site.register(Currency)
+admin.site.register(Med)
+admin.site.register(Language)
+admin.site.register(Climate)
+admin.site.register(Hotel)
+admin.site.register(Entertainment)
+admin.site.register(Attractions)
+admin.site.register(Translator)
+admin.site.register(Packet)
+admin.site.register(PromoCode)
+admin.site.register(QuizAnswer)
+admin.site.register(QuizQuestion)
+admin.site.register(Quiz)
+# admin.site.register(Translator)

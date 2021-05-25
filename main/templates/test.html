@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Главна страница</h1>
+{% if countries %}
+{% for el in countries %}
+<div class="alert alert-warning mt-2">
+    <h3>{{el.title}}</h3>
+</div>
+{% endfor %}
+{% else %}
+<p>No data</p>
+{% endif %}
+{% endblock %}
